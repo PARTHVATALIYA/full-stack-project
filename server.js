@@ -11,21 +11,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(require('cors')());
 app.use(require('helmet')());
 app.use('/api/students', require('./routes/students'));
-app.use(express.static(path.resolve(__dirname, 'client', 'build')));
-// if (process.env.NODE_ENV === 'production') {
-//   // Set static folder
-//   app.use(express.static('client/build'));
 
-  // app.get('/', (req, res) => {
-  //   // res.sendfile(path.resolve(__dirname, 'client'));
-  //   res.sendfile(path.resolve(__dirname, 'client', 'src', 'index.js'));
-  //   // res.render('index.js')
-  // });
-// }
+// Production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('client/build'));
 
-app.get('/', (req, res) => {
-  // Send the 'index.html' file
-  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.js'));
-});
+  app.get('*', (req, res) => {
+    res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
-app.listen(PORT, () => console.log(`App running on port ${PORT}`));
+app.listen(PORT, () => console.log(`App running on port ${PORT}`)  );
