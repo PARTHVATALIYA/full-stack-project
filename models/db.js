@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 // Allow Promises
 mongoose.Promise = global.Promise;
 // Connection
-mongoose.connect('mongodb://43.205.144.182:27017/db_test', { useNewUrlParser: true,useUnifiedTopology:true,useFindAndModify:false  });
+mongoose.connect('mongodb://13.232.246.247:27017/db_test', { useNewUrlParser: true,useUnifiedTopology:true,useFindAndModify:false  });
 // Validation
 mongoose.connection
   .once('open', () => console.log('Connected to the database!'))
