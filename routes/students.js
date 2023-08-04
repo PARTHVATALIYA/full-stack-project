@@ -41,9 +41,6 @@ router.post('/', async (req, res) => {
 
 });
 
-// @route   PUT /api/students/:id
-// @desc    Update a student
-// @access  Public
 router.put('/:id', async (req, res) => {
   try {
     const updatedStudent = await Students.findByIdAndUpdate(req.params.id, req.body);
